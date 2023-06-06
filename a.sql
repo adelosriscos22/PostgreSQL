@@ -158,6 +158,20 @@ GROUP BY Country
 ORDER BY COUNT(CustomerID) DESC;
 
 
+'EXTRACT Syntax Fecha Hora'
+SELECT * 
+FROM preguntes 
+WHERE EXTRACT(YEAR FROM publicacio) > 2018;
+
+SELECT * FROM preguntes 
+WHERE EXTRACT (HOUR  FROM  publicacio) 
+BETWEEN 12 AND 20; 
+
+
+
+
+
+
 
 
 
