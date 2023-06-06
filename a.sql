@@ -4,9 +4,9 @@
 <	'Less than	'
 >=	'Greater than or equal	'
 <=	'Less than or equal	'
-<>	'Not equal. N !=	'
-BETWEEN	'Between a certain range'
-LIKE	'Search for a pattern'	
+<> or !=	'Not equal.  !=	'
+BETWEEN	'Between a certain range USAR AND '
+LIKE	'Search for a pattern   %BUSCAR%'	
 IN	'To specify multiple possible values for a column'
 
 'WHERE Syntax'
@@ -34,11 +34,10 @@ SELECT column1, column2, ...
 FROM table_name
 WHERE NOT condition;
 
-'ORDER BY Syntax'
+'ORDER BY Syntax  ASC \ DESC'
 SELECT column1, column2, ...
 FROM table_name
 ORDER BY column1, column2, ... ASC|DESC;
-
 
 'MIN() Syntax'
 SELECT MIN(column_name)
@@ -120,11 +119,12 @@ WHERE column_name BETWEEN value1 AND value2;
 'Alias Column Syntax'
 SELECT column_name AS alias_name
 FROM table_name;
+
 'Alias Table Syntax'
 SELECT column_name(s)
 FROM table_name AS alias_name;
 
-A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+'A JOIN clause is used to combine rows from two or more tables, based on a related column between them.'
 
 
 INNER JOIN: 'Returns records that have matching values in both tables'
@@ -133,12 +133,19 @@ RIGHT JOIN: 'Returns all records from the right table, and the matched records f
 FULL JOIN: 'Returns all records when there is a match in either left or right table'
 
 
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+
+
 SELECT *
 FROM orders
 LEFT JOIN customers ON orders.customerid = customers.customerid ;
 
 
-The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of customers in each country".
+
+
+'The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of customers in each country".'
 
 The GROUP BY statement is often used with aggregate 
 functions (COUNT(), MAX(), MIN(), SUM(), AVG()) to group the 
@@ -169,6 +176,29 @@ WHERE EXTRACT(YEAR FROM publicacio) > 2018;
 SELECT * FROM preguntes 
 WHERE EXTRACT (HOUR  FROM  publicacio) 
 BETWEEN 12 AND 20; 
+
+
+
+--PROMEDIO con ROUND y AVG
+
+--Quina es la quota promig mostrada com a "Promig quota" i la venda promig mostrades com a "Promig vendes" 
+--dels venedors?
+-- De tots els venedors
+SELECT	ROUND(AVG(r.cuota), 2)  || '�' AS "Promig quota",
+		ROUND(AVG(r.ventas), 2) || '�' AS "Promig vendes"
+FROM repventas r;
+
+--'Quin es el rendiment de quota promig dels venedors (percentatge de les vendes
+--		respecte la quota)?'
+
+SELECT ROUND(100 * (r.ventas / r.cuota), 2) || '%'  AS "Rendiment vendes / quota"
+FROM repventas r;
+
+
+-- CONTAR DIFERENTES COUNT DISTINCT
+--Quants titols diferents tenen els venedors?
+SELECT COUNT(DISTINCT(r.titulo)) AS "T�tols diferents de venedors"
+FROM repventas r
 
 
 
