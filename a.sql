@@ -1,13 +1,13 @@
-'''
-=	Equal	
->	Greater than	
-<	Less than	
->=	Greater than or equal	
-<=	Less than or equal	
-<>	Not equal. N !=	
-BETWEEN	Between a certain range	
-LIKE	Search for a pattern	
-IN	To specify multiple possible values for a column'''
+
+=	'Equal	'
+>	'Greater than'	
+<	'Less than	'
+>=	'Greater than or equal	'
+<=	'Less than or equal	'
+<>	'Not equal. N !=	'
+BETWEEN	'Between a certain range'
+LIKE	'Search for a pattern'	
+IN	'To specify multiple possible values for a column'
 
 'WHERE Syntax'
 SELECT column1, column2, ...
@@ -39,9 +39,6 @@ SELECT column1, column2, ...
 FROM table_name
 ORDER BY column1, column2, ... ASC|DESC;
 
-'IS NULL IS NOT NULL'
-SELECT * FROM Customers
-WHERE PostalCode IS NULL |IS NOT NULL ;
 
 'MIN() Syntax'
 SELECT MIN(column_name)
@@ -53,7 +50,6 @@ SELECT MAX(column_name)
 FROM table_name
 WHERE condition;
 
-
 'The COUNT() function returns the number of 
 rows that matches a specified criterion.'
 
@@ -62,6 +58,10 @@ SELECT COUNT(column_name)
 FROM table_name
 WHERE condition;
 
+'ROUND() Syntax'
+SELECT ROUND(column_name)
+FROM table_name
+WHERE condition;
 
 'The AVG() function returns the average value of a numeric column. '
 
